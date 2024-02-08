@@ -41,8 +41,11 @@ ctrlleft+ctrlright # keyboard module calls it left ctrl and right ctrl
 
 """
 # ideas for actions:
-"""
-custom_search
-open terminal with python
-text replacement like on phone
-"""
+if 0:
+    # custom search
+    import custom_search
+    # open terminal with python
+    import subprocess
+    subprocess.Popen(['powershell.exe'], creationflags=subprocess.CREATE_NEW_CONSOLE)
+    # text replacement like on phone
+    import text_replacement

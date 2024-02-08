@@ -11,7 +11,7 @@ def custom_search(input_text):
         'yt':'https://www.youtube.com/results?search_query=',
         'map':'https://www.google.com/maps/search/',
         'amz':'https://www.amazon.ca/s?k=',
-        'lyr':'https://genius.com/search?q=', # doesn't work
+        'lyr':'https://genius.com/search?q=',
         'ef':'https://www.wordreference.com/enfr/',
         'fe':'https://www.wordreference.com/fren/',
         'eg':'https://www.wordreference.com/engr/',
