@@ -11,7 +11,6 @@ def wait_for_keypress(key, action_to_perform=None):
     if action_to_perform:
         action_to_perform()
 
-# make another script that performs an action when a combination of keys is pressed
 def wait_for_keypress_combo(keys, action_to_perform=None):
     
     print(f"Waiting for '{keys}' key press...")
@@ -21,8 +20,6 @@ def wait_for_keypress_combo(keys, action_to_perform=None):
     if action_to_perform:
         action_to_perform()
 
-def to_desktop():
-    pyautogui.hotkey(['win','d'])
 
 # call action_to_perform when a combination of keys is pressed
 if __name__ == "__main__":
@@ -49,3 +46,4 @@ if 0:
     subprocess.Popen(['powershell.exe'], creationflags=subprocess.CREATE_NEW_CONSOLE)
     # text replacement like on phone
     import text_replacement
+    # GPT 4 API access

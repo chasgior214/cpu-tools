@@ -1,6 +1,6 @@
 
 
-def custom_search(input_text):
+def create_instructions(input_text):
     first_space_index = input_text.find(' ')
     where_to_search = input_text[:first_space_index]
     what_to_search = input_text[first_space_index+1:]
@@ -18,6 +18,8 @@ def custom_search(input_text):
         'ge':'https://www.wordreference.com/gren/',
         'εα':'https://www.wordreference.com/gren/',
         'goog':'https://www.google.com/search?q=',
+        'red': 'https://www.reddit.com/search/?q=',
+        'gh':'https://github.com/search?q=',
         'cgpt':'handled in shortcuts app'
     }
 
@@ -34,14 +36,30 @@ def custom_search(input_text):
         'eg':'%20',
         'ge':'%20',
         'εα':'%20',
-        'goog':'+'
+        'goog':'+',
+        'red':'+',
+        'gh':'+'
     }
     space_separator = space_separators.get(where_to_search)
     if not space_separator: space_separator = '_'
     formatted_search_term = what_to_search.replace(' ', space_separator)
+    # check which actually need a space separator. I think some can just have a space in the URL be automatically converted to %20
 
-    # add Reddit
+    if where_to_search == 'red':
+        formatted_search_term = formatted_search_term + '&include_over_18=1'
 
     url = search_keywords_urls.get(where_to_search) + formatted_search_term
 
     return url
+
+def run_search(input_text):
+    url = create_instructions(input_text)
+    import webbrowser
+    webbrowser.open(url)
+
+if __name__ == "__main__":
+    input_text = input("Enter search term: ")
+    url = create_instructions(input_text)
+    print(url)
+    import webbrowser
+    webbrowser.open(url)

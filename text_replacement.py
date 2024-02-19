@@ -15,7 +15,7 @@ text_replacement_dict = {
     'c':'see',
     'cad':'CAD',
     'def':'definitely',
-    'dont':"don't",
+    'dont':'don\'t',
     'dw':'don\'t worry',
     'dwbi':'don\'t worry about it',
     'esp':'especially',
