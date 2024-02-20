@@ -13,10 +13,10 @@ search_keywords_urls = {
     'goog':'https://www.google.com/search?q=',
     'red': 'https://www.reddit.com/search/?q=',
     'gh':'https://github.com/search?q=',
-    'cgpt':'handled in shortcuts app'
+    'cgpt':'handled in shortcuts app' # maybe just open https://chat.openai.com/
 }
 
-def custom_search(input_text):
+def custom_search(input_text): # probably move this to its own file
     first_space_index = input_text.find(' ')
     where_to_search = input_text[:first_space_index]
     what_to_search = input_text[first_space_index+1:]
@@ -68,6 +68,36 @@ def utilize_command(input_text, OS='Windows'):
     elif input_text.startswith('py '):
         # run one line of Python code (the input), and have it import a few libraries before running that line (just NumPy?)
         pass
+    elif input_text.startswith('gpt4 '):
+        # GPT 4 API access
+        import OpenAI_API
+        response = OpenAI_API.open_chat(input_text[5:], model='gpt4')
+        # display response in a window
+        import tkinter as tk
+        root = tk.Tk()
+        root.title("GPT-4 response")
+        root.geometry("800x300")
+        # split response into multiple labels if it's too long
+        response = str(response)
+        response = '\n'.join([response[i:i+100] for i in range(0, len(response), 50)])
+        label = tk.Label(root, text=response)
+        label.pack()
+        root.mainloop()
+    elif input_text.startswith('gpt3.5'):
+        # GPT 3.5 API access
+        import OpenAI_API
+        response = OpenAI_API.open_chat(input_text[7:], model='gpt3.5')
+        # display response in a window
+        import tkinter as tk
+        root = tk.Tk()
+        root.title("GPT-3.5 response")
+        root.geometry("800x300")
+        # split response into multiple labels if it's too long
+        response = str(response)
+        response = '\n'.join([response[i:i+100] for i in range(0, len(response), 50)])
+        label = tk.Label(root, text=response)
+        label.pack()
+        root.mainloop()
 
 
 if __name__ == "__main__":
@@ -81,11 +111,11 @@ if 0:
     # custom search
     # open terminal with PowerShell
     # open terminal with Python
+    # GPT 4, 3.5 API access (add way more functionality, like conversations instead of just one answer)
     """unimplemented"""
     # run one line of Python code (the input), and have it import a few libraries before running that line (just NumPy?)
     # text replacement like on phone
     import text_replacement
-    # GPT 4 API access
     # autoclicker
     # open a specific program?
     # open a specific file?
@@ -95,6 +125,9 @@ if 0:
     # toggle computer settings?
     # open a GUI to enter more complex commands?
     # set up work environment (open specific programs, open specific files, open specific websites, move things to certain parts of the screen, etc.)
+    # set custom hotkey function triggers (basically make Excel macros for the whole computer)
+    # other pyautogui things
+    # always on top windows/other inspiration from WindowsPowerToys?
 
 
-    # have it determine the OS and be able to run some commands on both Windows and Linux
+    # have it determine the OS and be able to run some commands as different versions for both Windows and Linux
