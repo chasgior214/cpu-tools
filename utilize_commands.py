@@ -1,27 +1,25 @@
+search_keywords_urls = {
+    'wrd':'https://en.wiktionary.org/wiki/',
+    'wik':'https://en.m.wikipedia.org/wiki/',
+    'yt':'https://www.youtube.com/results?search_query=',
+    'map':'https://www.google.com/maps/search/',
+    'amz':'https://www.amazon.ca/s?k=',
+    'lyr':'https://genius.com/search?q=',
+    'ef':'https://www.wordreference.com/enfr/',
+    'fe':'https://www.wordreference.com/fren/',
+    'eg':'https://www.wordreference.com/engr/',
+    'ge':'https://www.wordreference.com/gren/',
+    'εα':'https://www.wordreference.com/gren/',
+    'goog':'https://www.google.com/search?q=',
+    'red': 'https://www.reddit.com/search/?q=',
+    'gh':'https://github.com/search?q=',
+    'cgpt':'handled in shortcuts app'
+}
 
-
-def create_instructions(input_text):
+def custom_search(input_text):
     first_space_index = input_text.find(' ')
     where_to_search = input_text[:first_space_index]
     what_to_search = input_text[first_space_index+1:]
-
-    search_keywords_urls = {
-        'wrd':'https://en.wiktionary.org/wiki/',
-        'wik':'https://en.m.wikipedia.org/wiki/',
-        'yt':'https://www.youtube.com/results?search_query=',
-        'map':'https://www.google.com/maps/search/',
-        'amz':'https://www.amazon.ca/s?k=',
-        'lyr':'https://genius.com/search?q=',
-        'ef':'https://www.wordreference.com/enfr/',
-        'fe':'https://www.wordreference.com/fren/',
-        'eg':'https://www.wordreference.com/engr/',
-        'ge':'https://www.wordreference.com/gren/',
-        'εα':'https://www.wordreference.com/gren/',
-        'goog':'https://www.google.com/search?q=',
-        'red': 'https://www.reddit.com/search/?q=',
-        'gh':'https://github.com/search?q=',
-        'cgpt':'handled in shortcuts app'
-    }
 
     if where_to_search not in search_keywords_urls:
         where_to_search = 'goog'
@@ -52,14 +50,51 @@ def create_instructions(input_text):
 
     return url
 
-def run_search(input_text):
-    url = create_instructions(input_text)
-    import webbrowser
-    webbrowser.open(url)
+
+def utilize_command(input_text, OS='Windows'):
+    if input_text[:input_text.find(' ')] in search_keywords_urls:
+        # perform custom search
+        url = custom_search(input_text)
+        import webbrowser
+        webbrowser.open(url)
+    elif input_text == 'ps':
+        # open terminal with PowerShell
+        import subprocess
+        subprocess.Popen(['powershell.exe'], creationflags=subprocess.CREATE_NEW_CONSOLE)
+    elif input_text == 'py':
+        # open terminal with python
+        import subprocess
+        subprocess.Popen(['powershell.exe', '-Command', 'python'], creationflags=subprocess.CREATE_NEW_CONSOLE)
+    elif input_text.startswith('py '):
+        # run one line of Python code (the input), and have it import a few libraries before running that line (just NumPy?)
+        pass
+
 
 if __name__ == "__main__":
-    input_text = input("Enter search term: ")
-    url = create_instructions(input_text)
-    print(url)
-    import webbrowser
-    webbrowser.open(url)
+    input_text = input("Enter command: ")
+    utilize_command(input_text)
+
+
+# ideas for actions:
+if 0:
+    """implemented"""
+    # custom search
+    # open terminal with PowerShell
+    # open terminal with Python
+    """unimplemented"""
+    # run one line of Python code (the input), and have it import a few libraries before running that line (just NumPy?)
+    # text replacement like on phone
+    import text_replacement
+    # GPT 4 API access
+    # autoclicker
+    # open a specific program?
+    # open a specific file?
+    # open a specific folder?
+    # open a specific website?
+    # computer search?
+    # toggle computer settings?
+    # open a GUI to enter more complex commands?
+    # set up work environment (open specific programs, open specific files, open specific websites, move things to certain parts of the screen, etc.)
+
+
+    # have it determine the OS and be able to run some commands on both Windows and Linux

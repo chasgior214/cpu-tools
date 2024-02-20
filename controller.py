@@ -1,10 +1,9 @@
 import time
 import pyautogui
-import keyboard
 import tkinter as tk
 
 import hotkey_function_trigger as hft
-import custom_search
+import utilize_commands
 
 def command_mode():
     hft.wait_for_keypress_combo('numlock+ctrl')
@@ -20,12 +19,12 @@ def command_mode():
         command = entry.get()
         root.quit()
         root.destroy()
-        custom_search.run_search(command)
+        utilize_commands.utilize_command(command)
         
     submit_button = tk.Button(root, text="Submit", command=on_submit)
     submit_button.pack()
     root.bind('<Return>', on_submit)
-    # bring the window to the front
+    # bring the window to the front and make it the focus. get a better way to do this
     root.lift()
     root.attributes('-topmost', True)
     root.attributes('-disabled', False)
@@ -34,10 +33,15 @@ def command_mode():
     time.sleep(0.1)
     root.mainloop()
 
+def determine_OS():
+    import platform
+    OS = platform.system()
+    return OS
 
 def to_desktop():
     pyautogui.hotkey(['win','d'])
 
 
 if __name__ == "__main__":
-    command_mode()
+    while True:
+        command_mode()

@@ -1,5 +1,3 @@
-import time
-import pyautogui
 import keyboard
 
 def wait_for_keypress(key, action_to_perform=None):
@@ -35,15 +33,4 @@ ctrl+numlock
 ctrl+alt+numlock
 ctrlleft+ctrlright # keyboard module calls it left ctrl and right ctrl
     would need to use keyboard.read_event() and make my own function to check if the combo is pressed
-
 """
-# ideas for actions:
-if 0:
-    # custom search
-    import custom_search
-    # open terminal with python
-    import subprocess
-    subprocess.Popen(['powershell.exe'], creationflags=subprocess.CREATE_NEW_CONSOLE)
-    # text replacement like on phone
-    import text_replacement
-    # GPT 4 API access
