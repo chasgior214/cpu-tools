@@ -13,6 +13,7 @@ search_keywords_urls = {
     'goog':'https://www.google.com/search?q=',
     'red': 'https://www.reddit.com/search/?q=',
     'gh':'https://github.com/search?q=',
+    'lt':'https://lyricstranslate.com/en/site-search?query=',
     'cgpt':'handled in shortcuts app' # maybe just open https://chat.openai.com/
 }
 
@@ -36,7 +37,8 @@ def custom_search(input_text): # probably move this to its own file
         'εα':'%20',
         'goog':'+',
         'red':'+',
-        'gh':'+'
+        'gh':'+',
+        'lt':'+',
     }
     space_separator = space_separators.get(where_to_search)
     if not space_separator: space_separator = '_'
@@ -98,7 +100,12 @@ def utilize_command(input_text, OS='Windows'):
         label = tk.Label(root, text=response)
         label.pack()
         root.mainloop()
-
+    elif input_text == 'txtr':
+        import text_replacement
+        text_replacement.enable_text_replacement()
+    elif input_text == 'txtroff':
+        import text_replacement
+        text_replacement.disable_text_replacement()
 
 if __name__ == "__main__":
     input_text = input("Enter command: ")
