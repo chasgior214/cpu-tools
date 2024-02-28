@@ -17,7 +17,7 @@ search_keywords_urls = {
     'cgpt':'handled in shortcuts app' # maybe just open https://chat.openai.com/
 }
 
-def custom_search(input_text): # probably move this to its own file
+def custom_search(input_text): # move this to its own file. move the search_keywords_urls with it, and then import it here
     first_space_index = input_text.find(' ')
     where_to_search = input_text[:first_space_index]
     what_to_search = input_text[first_space_index+1:]
@@ -59,7 +59,7 @@ def utilize_command(input_text, OS='Windows'):
         url = custom_search(input_text)
         import webbrowser
         webbrowser.open(url)
-    elif input_text == 'ps':
+    elif input_text == 'ps': # when adding differentation by OS, rename this one so that it's a generic name for opening a terminal
         # open terminal with PowerShell
         import subprocess
         subprocess.Popen(['powershell.exe'], creationflags=subprocess.CREATE_NEW_CONSOLE)
@@ -85,7 +85,7 @@ def utilize_command(input_text, OS='Windows'):
         label = tk.Label(root, text=response)
         label.pack()
         root.mainloop()
-    elif input_text.startswith('gpt3.5'):
+    elif input_text.startswith('gpt3.5 '):
         # GPT 3.5 API access
         import OpenAI_API
         response = OpenAI_API.open_chat(input_text[7:], model='gpt3.5')
@@ -103,7 +103,7 @@ def utilize_command(input_text, OS='Windows'):
     elif input_text == 'txtr':
         import text_replacement
         text_replacement.enable_text_replacement()
-    elif input_text == 'txtroff':
+    elif input_text == 'txtroff': # doesn't work yet
         import text_replacement
         text_replacement.disable_text_replacement()
 
@@ -119,10 +119,9 @@ if 0:
     # open terminal with PowerShell
     # open terminal with Python
     # GPT 4, 3.5 API access (add way more functionality, like conversations instead of just one answer)
+    # text replacement like on phone (add better way to disable it)
     """unimplemented"""
     # run one line of Python code (the input), and have it import a few libraries before running that line (just NumPy?)
-    # text replacement like on phone
-    import text_replacement
     # autoclicker
     # open a specific program?
     # open a specific file?
@@ -130,7 +129,7 @@ if 0:
     # open a specific website?
     # computer search?
     # toggle computer settings?
-    # open a GUI to enter more complex commands?
+    # open a GUI to enter more complex commands/give an overview of enabled features/history of commands used?
     # set up work environment (open specific programs, open specific files, open specific websites, move things to certain parts of the screen, etc.)
     # set custom hotkey function triggers (basically make Excel macros for the whole computer)
     # other pyautogui things

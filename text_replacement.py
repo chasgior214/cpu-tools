@@ -125,6 +125,10 @@ def on_key_event(e):
             keyboard.press_and_release('space')
             time.sleep(0.1)
         last_20_keys = last_20_keys[1:] + [' ']
+    elif e.name == 'backspace':
+        last_20_keys = [' '] + last_20_keys[:-1]
+    elif e.name in ['enter', 'tab']: # eventually make it so that last_20_keys works after things like hotkeys (so in a browser, I can do something like 'alt+d' to enter the address bar, then 'im w u', and and the 'im' will be correctly replaced)
+        last_20_keys = [' ' for i in range(20)]
     else:
         last_20_keys = last_20_keys[1:] + [e.name]
     return
@@ -139,6 +143,8 @@ def disable_text_replacement(): # going to need to call this a different way. wo
     keyboard.unhook_all()
     return
 
-keyboard.on_press(on_key_event)
-keyboard.wait('esc') # this will block the program until the escape key is pressed
-keyboard.unhook_all() # this will stop the program from listening to any more key events
+if __name__ == "__main__":    
+    keyboard.on_press(on_key_event)
+    keyboard.wait('esc') # this will block the program until the escape key is pressed
+    keyboard.unhook_all() # this will stop the program from listening to any more key events
+    print(last_20_keys)
