@@ -1,4 +1,5 @@
 import keyboard
+#switch to pynput so don't need to use sudo when running on linux
 
 def wait_for_keypress(key, action_to_perform=None):
     

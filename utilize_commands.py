@@ -53,22 +53,28 @@ def custom_search(input_text): # move this to its own file. move the search_keyw
     return url
 
 
-def utilize_command(input_text, OS='Windows'):
+def utilize_command(input_text, OS='Linux'):
     if input_text[:input_text.find(' ')] in search_keywords_urls:
         # perform custom search
         url = custom_search(input_text)
         import webbrowser
         webbrowser.open(url)
-    elif input_text == 'ps': # when adding differentation by OS, rename this one so that it's a generic name for opening a terminal
-        # open terminal with PowerShell
+    elif input_text == 'term':
+        # open terminal
         import subprocess
-        subprocess.Popen(['powershell.exe'], creationflags=subprocess.CREATE_NEW_CONSOLE)
+        if OS == 'Windows':
+            subprocess.Popen(['powershell.exe'], creationflags=subprocess.CREATE_NEW_CONSOLE)
+        elif OS == 'Linux':
+            subprocess.Popen('gnome-terminal')
     elif input_text == 'py':
         # open terminal with python
         import subprocess
-        subprocess.Popen(['powershell.exe', '-Command', 'python'], creationflags=subprocess.CREATE_NEW_CONSOLE)
+        if OS == 'Windows':
+            subprocess.Popen(['powershell.exe', '-Command', 'python'], creationflags=subprocess.CREATE_NEW_CONSOLE)
+        elif OS == 'Linux':
+            subprocess.Popen('python3') # needs to be checked when called from controller
     elif input_text.startswith('py '):
-        # run one line of Python code (the input), and have it import a few libraries before running that line (just NumPy?)
+        # run one line of Python code (the input) in a new REPL, and have it import a few libraries before running that line (just NumPy?)
         pass
     elif input_text.startswith('gpt4 '):
         # GPT 4 API access
@@ -121,6 +127,7 @@ if 0:
     # GPT 4, 3.5 API access (add way more functionality, like conversations instead of just one answer)
     # text replacement like on phone (add better way to disable it)
     """unimplemented"""
+    # Linux support. Note currently just Ubuntu
     # run one line of Python code (the input), and have it import a few libraries before running that line (just NumPy?)
     # autoclicker
     # open a specific program?
