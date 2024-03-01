@@ -53,7 +53,7 @@ def custom_search(input_text): # move this to its own file. move the search_keyw
     return url
 
 
-def utilize_command(input_text, OS='Linux'):
+def utilize_command(input_text, OS='Windows'):
     if input_text[:input_text.find(' ')] in search_keywords_urls:
         # perform custom search
         url = custom_search(input_text)
@@ -109,7 +109,7 @@ def utilize_command(input_text, OS='Linux'):
     elif input_text == 'txtr':
         import text_replacement
         text_replacement.enable_text_replacement()
-    elif input_text == 'txtroff': # doesn't work yet
+    elif input_text == 'txtroff': # doesn't work yet, currently need to hit esc to stop it
         import text_replacement
         text_replacement.disable_text_replacement()
 
@@ -126,21 +126,20 @@ if 0:
     # open terminal with Python
     # GPT 4, 3.5 API access (add way more functionality, like conversations instead of just one answer)
     # text replacement like on phone (add better way to disable it)
+    # Linux support. Note currently just Ubuntu, and it also needs more work (controller among other things)
     """unimplemented"""
-    # Linux support. Note currently just Ubuntu
+    # something to quickly paste certain text (current date, personal Zoom room link, etc.)
+    # clipboard history (not existent on Linux). Maybe for more than just text
     # run one line of Python code (the input), and have it import a few libraries before running that line (just NumPy?)
     # autoclicker
-    # open a specific program?
-    # open a specific file?
-    # open a specific folder?
-    # open a specific website?
+    # open a specific program/file/folder/website
     # computer search?
     # toggle computer settings?
+    # force close currently open program?
     # open a GUI to enter more complex commands/give an overview of enabled features/history of commands used?
     # set up work environment (open specific programs, open specific files, open specific websites, move things to certain parts of the screen, etc.)
     # set custom hotkey function triggers (basically make Excel macros for the whole computer)
     # other pyautogui things
     # always on top windows/other inspiration from WindowsPowerToys?
 
-
-    # have it determine the OS and be able to run some commands as different versions for both Windows and Linux
+    # maybe bring in Pythonista files and develop them here too. Easier than on the phone

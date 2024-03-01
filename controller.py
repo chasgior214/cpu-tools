@@ -5,7 +5,7 @@ import tkinter as tk
 import hotkey_function_trigger as hft
 import utilize_commands
 
-def command_mode():
+def command_mode(OS='Windows'):
     hft.wait_for_keypress_combo('numlock+ctrl')
     # open an input box to enter a command
     root = tk.Tk()
@@ -19,7 +19,7 @@ def command_mode():
         command = entry.get()
         root.quit()
         root.destroy()
-        utilize_commands.utilize_command(command)
+        utilize_commands.utilize_command(command, OS=OS)
         
     submit_button = tk.Button(root, text="Submit", command=on_submit)
     submit_button.pack()
@@ -43,5 +43,6 @@ def to_desktop():
 
 
 if __name__ == "__main__":
+    OS = determine_OS()
     while True:
-        command_mode()
+        command_mode(OS)
