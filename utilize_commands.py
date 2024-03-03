@@ -14,7 +14,6 @@ search_keywords_urls = {
     'red': 'https://www.reddit.com/search/?q=',
     'gh':'https://github.com/search?q=',
     'lt':'https://lyricstranslate.com/en/site-search?query=',
-    'cgpt':'handled in shortcuts app' # maybe just open https://chat.openai.com/
 }
 
 def custom_search(input_text): # move this to its own file. move the search_keywords_urls with it, and then import it here
@@ -59,6 +58,18 @@ def utilize_command(input_text, OS='Windows'):
         url = custom_search(input_text)
         import webbrowser
         webbrowser.open(url)
+    elif input_text == 'cgpt':
+        import webbrowser
+        webbrowser.open('https://chat.openai.com/') # can't use custom search to feed it a prompt
+    elif input_text.startswith('cgpt '):
+        import webbrowser
+        webbrowser.open('https://chat.openai.com/') # can't use custom search to feed it a prompt
+        # wait for page to load
+        import time
+        time.sleep(2)
+        import keyboard
+        keyboard.write(input_text[5:])
+        keyboard.press_and_release('enter')
     elif input_text == 'term':
         # open terminal
         import subprocess
@@ -112,7 +123,9 @@ def utilize_command(input_text, OS='Windows'):
     elif input_text == 'txtroff': # doesn't work yet, currently need to hit esc to stop it
         import text_replacement
         text_replacement.disable_text_replacement()
-
+    else:
+        print("Command not recognized")
+        return
 if __name__ == "__main__":
     input_text = input("Enter command: ")
     utilize_command(input_text)
@@ -132,6 +145,7 @@ if 0:
     # clipboard history (not existent on Linux). Maybe for more than just text
     # run one line of Python code (the input), and have it import a few libraries before running that line (just NumPy?)
     # autoclicker
+    # text prediction in any text box
     # open a specific program/file/folder/website
     # computer search?
     # toggle computer settings?
