@@ -46,3 +46,5 @@ if __name__ == "__main__":
     OS = determine_OS()
     while True:
         command_mode(OS)
+        # way to turn off: press numlock+ctrl again once command screen is up
+        # implement by learning how to run multiple processes, and adding a new function to hotkey_function_trigger.py 
