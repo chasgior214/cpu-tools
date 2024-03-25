@@ -48,3 +48,4 @@ if __name__ == "__main__":
         command_mode(OS)
         # way to turn off: press numlock+ctrl again once command screen is up
         # implement by learning how to run multiple processes, and adding a new function to hotkey_function_trigger.py 
+        # for some reason, it stops after the computer has been on for a long time. Implement logging to see what's going on
