@@ -103,6 +103,11 @@ if 0:
     # Linux support. Note currently just Ubuntu, and it also needs more work (controller among other things)
 
     """unimplemented"""
+    # command 'def'. Opens a new browser window with these tabs:
+        # word searched in Wiktionary
+        # word searched in Wikipedia
+        # word searched in Google
+        # last tab is opening ChatGPT with the prompt "What is the meaning of (word)?"
     # run one line of Python code (the input), and have it import a few libraries before running that line (just NumPy?) - good as a dedicated calculator
     # text prediction in any text box
 
