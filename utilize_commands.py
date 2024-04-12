@@ -117,6 +117,8 @@ if 0:
         # readout of cursor position
         # display overview of enabled features
         # display history of commands used
+        # thing to insert special symbols/characters (incl no-width space), patterns of characters (and patterns of keypresses, but that's already noted in the macro-making thing)
+        # list of available commands
     
     # open a specific program/file/folder/website
     # computer search?
