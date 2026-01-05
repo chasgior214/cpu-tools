@@ -121,6 +121,7 @@ if 0:
         # list of available commands
     
     # open a specific program/file/folder/website
+    # a mode for writing DMs, which in addition to text replacement and AI text predictions, does some other things for me like highlight (or notify me or something) when there's words/phrases that I don't want (actually, seriously, really, etc)
     # computer search?
     # toggle computer settings
     # force close currently open program

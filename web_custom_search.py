@@ -54,3 +54,5 @@ def custom_search(input_text):
     url = search_keywords_urls.get(where_to_search) + formatted_search_term
 
     return url
+# add an escape character so that Google search can be done with things like "map of Toronto poster" or "red cross"
+    # * as escape character?
